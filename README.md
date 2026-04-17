@@ -7,7 +7,6 @@ Data Collection is done with R and Python and all visualizations except for [Tab
 * [Tableau Dashboard](#tableau-dashboard)
 * [Data Visualization](#data-visualization)
     * [Longest-Running Hits](#-the-vinyl-dashboard-longest-running-hits)
-    * [Tempo](#tempo)
     * [The Rise of One-week Wonders](#the-rise-of-one-week-wonders)
     * [Billboard Hot 100 Timeline Infographic](#billboard-hot-100-timeline-infographic)
 * [Data Collection & Sources](#️-data-collection--sources)
@@ -33,18 +32,6 @@ Time is mapped around the vinyl's circumference, while the vinyl grooves serve a
 <p align="center">
   <img src="charts/Record_Chart.png" width="100%" alt="Billboard Vinyl Dashboard">
 </p>
-
----
-
-### Tempo
-
-Tempo distribution of songs on every album of The Beatles. 
-
-> *"Everyone of them knew that as time went by <br>
-> They'd get a little bit older and a little bit slower"* <br>
-> — **Revolution 9**
-
-https://github.com/user-attachments/assets/65bbf868-bc8e-4696-88ed-b17936691aa3
 
 ---
 
