@@ -1,4 +1,4 @@
-# Evolution of Mainstream Music — Billboard Hot 100 (1960–2025)
+# Evolution of Mainstream Music - Billboard Hot 100 (1960-2025)
 
 Tracking the evolution of mainstream music through data visualization (1960-2025).
 The data is collected by scraping Billboard Hot 100 history and enriched with MusicBrainz and TheAudioDB APIs.
@@ -6,42 +6,42 @@ Data collection is done with R and Python. All transformations run in dbt on Duc
 
 ```mermaid
 flowchart LR
-    subgraph Extract ["Extract (R)"]
+    subgraph Collect ["Data Collection (R)"]
         A[Billboard Hot 100<br/>weekly history] --> R1[01_data_preparation.R]
         B[MusicBrainz API] --> R1
         C[TheAudioDB API] --> R1
     end
     R1 --> D["data/raw/ (CSV)"]
-    subgraph Transform ["Transform (dbt + DuckDB)"]
+    subgraph Engineer ["Data Engineering (dbt + DuckDB)"]
         D --> E[staging models<br/>+ data tests]
         S[seeds:<br/>genre rules] --> F
         E --> F[marts:<br/>dim_artists, fct_songs,<br/>fct_chart_weeks]
     end
-    F --> G[Tableau / Power BI<br/>+ R chart scripts]
+    F --> G[Data Visualization<br/>Tableau / Power BI / R]
 ```
 
 ## Table of Contents
-* [Tableau Dashboard](#tableau-dashboard)
 * [Data Visualization](#data-visualization)
+    * [Tableau Dashboard](#tableau-dashboard)
     * [Longest-Running Hits](#longest-running-hits)
     * [The Rise of One-week Wonders](#the-rise-of-one-week-wonders)
     * [Billboard Hot 100 Timeline Infographic](#billboard-hot-100-timeline-infographic)
-* [Data Model](#data-model)
-* [Data Quality & Testing](#data-quality--testing)
-* [Data Collection & Sources](#data-collection--sources)
+* [Data Collection](#data-collection)
+* [Data Engineering](#data-engineering)
+    * [Data Model](#data-model)
+    * [Data Quality & Testing](#data-quality--testing)
 
 ---
 
-## Tableau Dashboard
+## Data Visualization
+
+### Tableau Dashboard
 
 Explore the interactive version of this visualization on Tableau Public. Hover over the genre waves to see the all-time top artists for each style, or use the timeline to filter the vinyl chart by decade.
 
 [**Access the Interactive Tableau Dashboard Here**](https://public.tableau.com/app/profile/armin.talic/viz/EvolutionofMainstreamMusicBillboardHot100/EvolutionofMainstreamMusic)
 
-
 ---
-
-## Data Visualization
 
 ### Longest-Running Hits
 
@@ -126,34 +126,9 @@ The following visualizations break down 65 years of musical data into specific e
 
 ---
 
-## Data Model
+## Data Collection
 
-The pipeline is split into two layers:
-
-| Layer | Tooling | What it does |
-|---|---|---|
-| **Extract** | R ([data_collection/01_data_preparation.R](data_collection/01_data_preparation.R)) | Downloads the weekly Hot 100 history and fetches metadata for every unique performer from the MusicBrainz and TheAudioDB APIs. The API pulls use cache-and-resume, so the multi-hour fetches never need repeating. Raw CSVs land in `data/raw/` unchanged. |
-| **Transform** | dbt + DuckDB (`models/`) | Staging models type and standardize the raw extracts. Seeds hold the genre-classification rules as plain CSV. Marts roll everything up to analysis-ready tables. |
-
-Main models:
-
-* `stg_billboard_weekly` — weekly chart grain, typed, with derived year/decade/new-entry flags
-* `dim_artists` — one row per performer with the resolved parent genre and API metadata
-* `fct_songs` — one row per song per chart year: weeks on chart, peak position, genre, BPM
-* `fct_chart_weeks` — weekly grain (1960+) materialized for BI tools
-
-Classifying ~11,000 performers into 10 parent genres from messy community tags is the trickiest part of the project. The rules live in three dbt seeds — a tag blocklist, keyword rules, and artist-level overrides — so every rule is versioned, testable and reviewable as a plain CSV diff.
-
-## Data Quality & Testing
-
-Every model has dbt data tests (uniqueness, not-null, accepted ranges and values):
-
-* Chart positions must fall in 1–100, BPM in 30–300, genre labels must belong to the 10-genre taxonomy.
-* The uniqueness test on the weekly grain caught a real historical quirk: for 13 weeks in late 1990, "Unchained Melody" by The Righteous Brothers charted twice at the same time — the 1965 original and a 1990 re-recording, both revived by the film *Ghost*. The test warns on those 13 known rows and fails only if new duplicates ever appear.
-
-## Data Collection & Sources
-
-This project uses a multi-source data pipeline, integrating core historical chart data with dual API metadata enrichment.
+This project uses a multi-source data pipeline, integrating core historical chart data with dual API metadata enrichment. Collection scripts live in [data_collection/](data_collection/).
 
 1. **Billboard Hot 100 History (Base Data)**
    * **Source:** [utdata/rwd-billboard-data](https://github.com/utdata/rwd-billboard-data)
@@ -171,3 +146,32 @@ This project uses a multi-source data pipeline, integrating core historical char
 
 5. **GetSongBPM API (Tempo)**
    * Song-level BPM for long-career artists, powering the tempo/metronome visuals.
+
+---
+
+## Data Engineering
+
+### Data Model
+
+The pipeline is split into two layers:
+
+| Layer | Tooling | What it does |
+|---|---|---|
+| **Collect** | R ([data_collection/01_data_preparation.R](data_collection/01_data_preparation.R)) | Downloads the weekly Hot 100 history and fetches metadata for every unique performer from the MusicBrainz and TheAudioDB APIs. The API pulls use cache-and-resume, so the multi-hour fetches never need repeating. Raw CSVs land in `data/raw/` unchanged. |
+| **Transform** | dbt + DuckDB ([data_engineering/](data_engineering/)) | Staging models type and standardize the raw extracts. Seeds hold the genre-classification rules as plain CSV. Marts roll everything up to analysis-ready tables. |
+
+Main models:
+
+* `stg_billboard_weekly`: weekly chart grain, typed, with derived year/decade/new-entry flags
+* `dim_artists`: one row per performer with the resolved parent genre and API metadata
+* `fct_songs`: one row per song per chart year, with weeks on chart, peak position, genre and BPM
+* `fct_chart_weeks`: weekly grain (1960+) materialized for BI tools
+
+Classifying ~11,000 performers into 10 parent genres from messy community tags is the trickiest part of the project. The rules live in three dbt seeds (a tag blocklist, keyword rules, and artist-level overrides) so every rule is versioned, testable and reviewable as a plain CSV diff.
+
+### Data Quality & Testing
+
+Every model has dbt data tests (uniqueness, not-null, accepted ranges and values):
+
+* Chart positions must fall in 1-100, BPM in 30-300, genre labels must belong to the 10-genre taxonomy.
+* The uniqueness test on the weekly grain caught a real historical quirk: for 13 weeks in late 1990, "Unchained Melody" by The Righteous Brothers charted twice at the same time (the 1965 original and a 1990 re-recording, both revived by the film *Ghost*). The test warns on those 13 known rows and fails only if new duplicates ever appear.
