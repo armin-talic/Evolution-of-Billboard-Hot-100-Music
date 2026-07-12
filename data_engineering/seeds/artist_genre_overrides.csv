@@ -1,0 +1,42 @@
+priority,rule_type,performer_pattern,parent_genre
+10,other_only,The Beatles|The Rolling Stones,Rock & Metal
+20,other_only,Mariah Carey|Whitney Houston|Janet Jackson,R&B/Soul
+30,other_only,Madonna|Taylor Swift|Michael Jackson|Bee Gees|Dua Lipa|Bruno Mars,Pop
+40,force,The Weeknd,Pop
+50,other_only,Soul|Girls|7 Mile|Anacostia|B.M.U|AWB|Stairsteps,R&B/Soul
+60,other_only,21 Savage|4Batz|Ambjaay|B Rich|BRS Kash,Hip-Hop
+70,other_only,B.B. King,Jazz/Blues
+80,other_only,BTO|Augustana|AJR|Alive 'N Kickin',Rock & Metal
+90,other_only,Chipmunks|Kendrick|Hathaway|Finalists|Cravalho|2Gether|O'Day,Pop
+100,other_only,Aleman|Ana|Azul Azul,Latin
+110,other_only,Apollo 100|Ace Cannon,Electronic/Dance
+120,other_only,Drake|21 Savage,Hip-Hop
+130,other_only,Carl Douglas|Honey Cone|Martha & The Vandellas|Booker T|Dru Hill|Mario Winans|Nelly|Stylistics|Free Movement|Sylk-E|Ollie And Jerry|Jaynetts|Jive Five|Rhythm Heritage|Rhythm Syndicate|Shirley & Company|Edwin Hawkins,R&B/Soul
+140,other_only,Will Smith|Dem Franchize Boyz|T-Wayne|Zay Hilfigerrr|Paperboy|K.P. & Envyi|Webbie|gnash,Hip-Hop
+150,other_only,Freddie And The Dreamers|The Raiders|Roy Orbison|Rooftop Singers|Shocking Blue|Oliver$|Eric Clapton|Imagine Dragons|John Cafferty|Boyce & Bobby Hart|Every Mothers' Son|Duane Eddy|Marmalade|Bo Donaldson|Safaris|Wadsworth Mansion,Rock & Metal
+160,other_only,Eslabon Armado|Peso Pluma|Encanto Cast|Gerardo|Emilio Pericoli|Carolina Gaitan,Latin
+170,other_only,Oliver Anthony|Jim Stafford|Jeanne Black|CW McCall|C.W. McCall|Randy VanWarmer,Country/Folk
+180,other_only,Enigma|K.W.S.|Bazuka|Vangelis|Apollo 100|Hot Butter,Electronic/Dance
+190,other_only,Bert Kaempfert|Henry Mancini|David Rose|Lawrence Welk|Bill Black|Chuck Mangione,Jazz/Blues
+200,other_only,Dawn|McCoo|Captain & Tennille|Partridge Family|Bobby Vee|Trini Lopez|Singing Nun|Little Peggy March|Rick Nelson|Joey Dee|Kyu Sakamoto|Joey Scarbury|Frank Mills|High School Musical|Gavin DeGraw|Richard Chamberlain|Bill Conti|Hollywood Argyles|Joe Dowell|Larry Verne|Michael Damian|Nino Tempo|Rick Dees|Barry Sadler|New Vaudeville Band|Walter Murphy|Allan Sherman|Artists For Haiti|Ferrante|Tee Set|Gale Garnett|Matthew Wilder|Bells|Dixiebelles|G-Clefs|Silkie|Vic Dana|Paul Petersen|Rex Smith|Mark Lindsay|London Symphony|Marilyn McCoo|Tony Orlando|Cassidy,Pop
+210,other_only,"Lloyd Price|Willie Mitchell|Patti LaBelle|Fantastic Four|Moments|Vibrations|Peggy Scott|Bobbettes|Clarence Henry|Joe Jones|Damita Jo|Rufus & Carla|Blackgirl|Ovations|Radiants|Sherrys|Reddings|For Real|Mista|Davina|Missjones|Billy Lawrence|Sharon Bryant|Faith, Hope And Charity|High Inergy|Tierra|Nu Flavor|The Corsairs|Shades Of Blue|Spyder Turner",R&B/Soul
+220,other_only,Dirt Band|Bill Deal|Critters|Flaming Ember|Hudson Brothers|Roy Head|Swinging Blue Jeans|Flash Cadillac|Mojo Men|Commander Cody|Shooting Star|Giant Steps|Spiral Starecase|Ironhorse|Bourgeois Tagg|Fools|Chartbusters|Stompers|Tommy Conwell|Fotomaker|Duke Jupiter|LeBlanc & Carr|Michael Nesmith|Chad Mitchell Trio|Keith Hampshire|Stonebolt|Batdorf & Rodney,Rock & Metal
+230,other_only,Huncho Jack|Jazzy Jeff|Lil Wayne|Rodney O|310babii|A\+|V\.I\.C\.|JIN|West Street Mob|Icy Blu|Saja Boys,Hip-Hop
+240,other_only,Buck Owens|Chet Atkins|Craig Wayne Boyd|Cledus Maggard|Jack Blanchard|Charlie Ryan|Sundance Head|Johnny Cash|Adam Wakefield|Jerry Byrd|Johnny Bond|Lauren Duski|Jim Weatherly,Country/Folk
+250,other_only,Pajama Party|South Shore|Liquid Gold|Mystic Moods|Touch|El Coco|Device,Electronic/Dance
+260,other_only,Robert Maxwell|King Curtis|Ernie Freeman|Sammy Kaye|David Carroll,Jazz/Blues
+270,other_only,Ronnie Dove|Dickie Goodman|Roger Williams|Billy Vaughn|Johnny Crawford|Sawyer Fredericks|Four Preps|Gene Cotton|Pozo Seco|Bill Cosby|Ral Donner|Annette|Aly & AJ|Addrisi|Santo & Johnny|Sam Neely|Teresa Brewer|Michael Morales|Arbors|Ryan Cabrera|Robert Goulet|Lauren Spencer-Smith|Wild Orchid|B\.J\. Thomas|Danny Williams|Ray Conniff|Tracey Dey|Janie Grant|Dean And Jean|Playmates|Sunrays|Poppy Family|David Geddes|Lolita|Lou Monte|O'Kaysions|Diane Renay|Merrilee Rush|Sly Fox|Bobby Valentino|Ian Whitcomb|A'me Lorain|Julie Rogers|Mike Post|Paul Evans|Mike Clifford|Wayne Newton|Jud Strunk|Beverly Bremers|Daniel Boone|Frank Gari|Stevie Woods,Pop
+280,other_only,MoKenStef|Teri DeSario|Crush|Amanda Perez|Case Featuring Foxxy|Ta Mara|Dr. Buzzard|Johnny Gill|Link|J-Shin|Gene Redding|K-Ci|Keith Sweat|The S.O.U.L|Wilton Place|Tuxedo Junction|Chanson|Frankie Smith,R&B/Soul
+290,other_only,Real Boston Richey|Rob \$tone|YK Osiris|Candyman|Dorrough|DJ Taz|Kid Ink|L.A.D.|Luke Featuring|Master P|Militia|Pardison|Tay-K|Yung Berg|Hev-D|Nastyboy|Sagat|Twista|Lucas|Duice|Brotherhood Creed|Partners In Kryme,Hip-Hop
+300,other_only,Skylark|Cate Bros|Citizen King|Folk Implosion|The Click Five|The Storm|Dwight Twilley|Andy Taylor|Big Audio|Dan Baird|The Rebels|The Rovers,Rock & Metal
+310,other_only,FloyyMenor|Paula DeAnda|The Blackout Allstars|Artie The 1|Oscar Maydon|Yahritza,Latin
+320,other_only,Hudson Westbrook|Elvie Shane|Eric Heatherly|Heartland|Kevin Denney|Roy Drusky|Cyndi Thomson|Kellie Coffey,Country/Folk
+330,other_only,Shana|DJ Miko|Hannah Jones|Rockell|Mighty Dub Katz|Jellybean|Clivilles & Cole|Sound Factory,Electronic/Dance
+340,other_only,"Myles Smith|Bobby ""Boris"" Pickett|Jimmy Harnen|Martin Page|4PM|David Kushner|KT Tunstall|JP Saxe|Harry Simeone|Johnny Wakelin|Kenny Nolan|Don Costa|Kevin Lyttle|David Naughton|Kevin Paige|Mark Ambor|Michael Marcagi|Barry DeVorzon|Hugo Montenegro|Bob Beckham|Jerry Wallace|Robert Mitchum|Beyonce Featuring Nicki|Lidell Townsell|Lillywood|Lina Santiago|Lisa Keith|Mario Vazquez|Murray Head|N2U|NEIKED|Pinkfong|Regina|Rod Wave|Royal Philharmonic|She Moves|Sisqo Featuring|Teddy Geiger|The Honeydrippers|Wing And A Prayer|Willa Ford|Barbara George|Harold Dorman|Hi-Town|Ron Holden|Stacy Earl|Chris Walker|DeJ Loaf|Kristen Bell|Mark Dinning|Scarlett|Sweet Sensation|The Fantastic Johnny C|Rude Boys|Sanford/Townsend|Williams Brothers|Ali Thomson|Bobby Edwards|Carl Dobkins|Charlie Dore|Chris Kenner|Debbie Reynolds|Deja Vu|James Newton Howard|Jimmy Hall|Kathy Young|Kermit|Laissez Faire|Miss Toni Fisher|Sudden Change|The Braids|DeFranco Family|Original Caste|Times Two|Wink Martindale|Bobby Arvon|Bobby Bloom|Chantay's|Daddy Dewdrop|Gene And Debbe|J'Son|Jim Photoglo|Louie Louie|Marc E. Bassy|Marcie Blane|Marvin Hamlisch|Meri Wilson|Mikaila|Blue Ridge Rangers|The Nite-Liters|The Starlets|The Triplets|Thurl Ravenscroft|Voices That Care|Mooski|Jordan Adetunji|Immature|INOJ",Pop
+400,force,The Supremes,R&B/Soul
+410,force,Drake,Hip-Hop
+420,force,Rihanna|Charli XCX|Charlie XCX|Ariana Grande|Arianna Grande|Glass Animals,Pop
+430,force,Bad Bunny,Latin
+440,force,The Black Keys,Rock & Metal
+450,force,Timmy Edwards,Country/Folk
+460,force,Teddy Swims,R&B/Soul

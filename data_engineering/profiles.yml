@@ -1,0 +1,9 @@
+# Local DuckDB profile — no credentials, safe to commit.
+# dbt picks this up automatically when run from the project root.
+billboard_hot100:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      path: warehouse/billboard.duckdb
+      threads: 4

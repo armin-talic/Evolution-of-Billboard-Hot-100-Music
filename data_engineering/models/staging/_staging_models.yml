@@ -1,0 +1,71 @@
+version: 2
+
+models:
+  - name: stg_billboard_weekly
+    description: One row per song per chart week, typed and enriched with year/decade.
+    columns:
+      - name: chart_entry_key
+        description: >
+          Surrogate key (chart_week | performer | title). Known exception: for
+          13 weeks in late 1990, "Unchained Melody" by The Righteous Brothers
+          charted twice simultaneously (the 1965 original and a 1990
+          re-recording, boosted by the film Ghost) — the raw feed has no column
+          to distinguish the two recordings. The test warns at any duplicate
+          and only errors if new duplicates appear beyond those 13 known rows.
+        data_tests:
+          - unique:
+              config:
+                severity: error
+                warn_if: ">0"
+                error_if: ">13"
+          - not_null
+      - name: chart_week
+        data_tests:
+          - not_null
+      - name: chart_position
+        description: Position on the Hot 100 that week (1–100).
+        data_tests:
+          - not_null
+          - accepted_range:
+              arguments:
+                min_value: 1
+                max_value: 100
+      - name: peak_position_to_date
+        data_tests:
+          - accepted_range:
+              arguments:
+                min_value: 1
+                max_value: 100
+      - name: performer
+        data_tests:
+          - not_null
+      - name: title
+        data_tests:
+          - not_null
+
+  - name: stg_musicbrainz_artists
+    description: One row per performer with MusicBrainz genre tags and metadata.
+    columns:
+      - name: performer
+        data_tests:
+          - unique
+          - not_null
+
+  - name: stg_theaudiodb_artists
+    description: One row per performer with TheAudioDB genre/style/mood metadata.
+    columns:
+      - name: performer
+        data_tests:
+          - unique
+          - not_null
+
+  - name: stg_artist_tempo
+    description: Song-level BPM (partial coverage).
+    columns:
+      - name: bpm
+        data_tests:
+          - not_null
+          - accepted_range:
+              arguments:
+                min_value: 30
+                max_value: 300

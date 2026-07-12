@@ -1,0 +1,108 @@
+priority,keyword,parent_genre
+1,rock,Rock & Metal
+1,metal,Rock & Metal
+1,punk,Rock & Metal
+1,grunge,Rock & Metal
+1,aor,Rock & Metal
+1,rockabilly,Rock & Metal
+1,skiffle,Rock & Metal
+1,beat,Rock & Metal
+1,merseybeat,Rock & Metal
+1,post-hardcore,Rock & Metal
+1,metalcore,Rock & Metal
+1,djent,Rock & Metal
+1,surf,Rock & Metal
+1,emo,Rock & Metal
+1,easycore,Rock & Metal
+1,mod,Rock & Metal
+1,indie,Rock & Metal
+2,hip hop,Hip-Hop
+2,hip-hop,Hip-Hop
+2,rap,Hip-Hop
+2,trap,Hip-Hop
+2,drill,Hip-Hop
+2,g-funk,Hip-Hop
+2,boom bap,Hip-Hop
+2,horrorcore,Hip-Hop
+2,ratchet,Hip-Hop
+2,rage,Hip-Hop
+3,pop,Pop
+3,schlager,Pop
+3,bubblegum,Pop
+3,yé-yé,Pop
+3,k-pop,Pop
+3,kpop,Pop
+3,j-pop,Pop
+3,eurovision,Pop
+3,boy group,Pop
+3,boy band,Pop
+3,girl group,Pop
+3,chanson,Pop
+3,dansband,Pop
+3,adult contemporary,Pop
+3,easy listening,Pop
+4,r&b,R&B/Soul
+4,rnb,R&B/Soul
+4,soul,R&B/Soul
+4,funk,R&B/Soul
+4,motown,R&B/Soul
+4,doo-wop,R&B/Soul
+4,rhythm & blues,R&B/Soul
+4,quiet storm,R&B/Soul
+4,neo soul,R&B/Soul
+4,new jack swing,R&B/Soul
+5,country,Country/Folk
+5,folk,Country/Folk
+5,americana,Country/Folk
+5,bluegrass,Country/Folk
+5,western,Country/Folk
+5,nashville,Country/Folk
+5,honky tonk,Country/Folk
+5,cowboy,Country/Folk
+5,singer-songwriter,Country/Folk
+5,swamp,Country/Folk
+5,tex-mex,Country/Folk
+5,stomp and holler,Country/Folk
+5,acoustic,Country/Folk
+6,dance,Electronic/Dance
+6,electronic,Electronic/Dance
+6,house,Electronic/Dance
+6,techno,Electronic/Dance
+6,trance,Electronic/Dance
+6,edm,Electronic/Dance
+6,future bass,Electronic/Dance
+6,jungle,Electronic/Dance
+6,drum and bass,Electronic/Dance
+6,eurodance,Electronic/Dance
+6,club,Electronic/Dance
+6,krushclub,Electronic/Dance
+6,lo-fi,Electronic/Dance
+6,electronica,Electronic/Dance
+7,jazz,Jazz/Blues
+7,blues,Jazz/Blues
+7,swing,Jazz/Blues
+7,big band,Jazz/Blues
+7,bebop,Jazz/Blues
+7,bossa nova,Jazz/Blues
+7,stride,Jazz/Blues
+7,dixieland,Jazz/Blues
+7,cabaret,Jazz/Blues
+7,lounge,Jazz/Blues
+8,latin,Latin
+8,reggaeton,Latin
+8,salsa,Latin
+8,bachata,Latin
+8,mambo,Latin
+8,mariachi,Latin
+8,bolero,Latin
+8,flamenco,Latin
+8,norteño,Latin
+8,corrido,Latin
+8,mexicano,Latin
+8,tropical,Latin
+8,ranchera,Latin
+9,reggae,Reggae/Ska
+9,ska,Reggae/Ska
+9,rocksteady,Reggae/Ska
+9,dancehall,Reggae/Ska
+9,dub,Reggae/Ska

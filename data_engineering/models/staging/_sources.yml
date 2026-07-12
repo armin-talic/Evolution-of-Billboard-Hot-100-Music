@@ -1,0 +1,33 @@
+version: 2
+
+sources:
+  - name: raw
+    description: >
+      Raw extracts landed by the R extraction script (data_collection/01_data_preparation.R)
+      and one-off historical pulls. Files live in data/raw/ and are read directly
+      by DuckDB — no load step. R writes nulls as the literal string "NA", hence
+      nullstr below.
+    meta:
+      external_location: "read_csv('../data/raw/{name}.csv', header=true, nullstr='NA')"
+    tables:
+      - name: billboard_hot100_weekly
+        description: >
+          Weekly Billboard Hot 100 chart entries, 1958 to present. One row per
+          song per chart week. Source: utdata/rwd-billboard-data (GitHub).
+      - name: musicbrainz_artist_metadata
+        description: >
+          Artist metadata fetched from the MusicBrainz API — one row per unique
+          Billboard performer. Slow pull (1.2s rate limit per artist); the R
+          script uses cache-and-resume, so this file is append-only.
+      - name: theaudiodb_artist_metadata
+        description: >
+          Artist metadata from TheAudioDB API — one row per unique Billboard
+          performer. Used to fill genre gaps left by MusicBrainz.
+      - name: artist_tempo_bpm
+        description: >
+          Song BPM data from the GetSongBPM API for long-career artists.
+          Partial coverage (~400 songs) — only joined where present.
+      - name: emerging_artists_chart_history
+        description: >
+          Billboard Emerging Artists chart history (partial pull, small side
+          dataset — not part of the core marts).

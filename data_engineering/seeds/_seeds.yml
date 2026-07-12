@@ -1,0 +1,50 @@
+version: 2
+
+seeds:
+  - name: genre_tag_blocklist
+    description: >
+      Genre tags to discard before classification — nationalities, professions,
+      MusicBrainz housekeeping tags, and other noise.
+    columns:
+      - name: tag
+        data_tests:
+          - unique
+          - not_null
+
+  - name: genre_keyword_rules
+    description: >
+      Keyword-contains rules mapping a cleaned genre tag to a parent genre.
+      Lower priority wins, so a tag matching both "rock" and "pop" classifies
+      as Rock & Metal.
+    columns:
+      - name: keyword
+        data_tests:
+          - unique
+          - not_null
+      - name: parent_genre
+        data_tests:
+          - not_null
+
+  - name: artist_genre_overrides
+    description: >
+      Artist-level genre overrides for performers the tag-based classification
+      cannot handle. performer_pattern is a regex matched against the performer
+      name. rule_type "force" always wins; "other_only" applies only when
+      tag-based classification lands on Other.
+    columns:
+      - name: priority
+        data_tests:
+          - unique
+          - not_null
+      - name: rule_type
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: [force, other_only]
+      - name: performer_pattern
+        data_tests:
+          - not_null
+      - name: parent_genre
+        data_tests:
+          - not_null

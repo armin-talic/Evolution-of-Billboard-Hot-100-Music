@@ -1,0 +1,41 @@
+name: billboard_hot100
+version: "1.0.0"
+profile: billboard_hot100
+
+model-paths: ["models"]
+seed-paths: ["seeds"]
+test-paths: ["tests"]
+macro-paths: ["macros"]
+
+target-path: "target"
+clean-targets: ["target", "dbt_packages"]
+
+models:
+  billboard_hot100:
+    staging:
+      +materialized: view
+      +schema: staging
+    intermediate:
+      +materialized: view
+      +schema: intermediate
+    marts:
+      +materialized: table
+      +schema: marts
+
+seeds:
+  billboard_hot100:
+    +schema: seeds
+    genre_tag_blocklist:
+      +column_types:
+        tag: varchar
+    genre_keyword_rules:
+      +column_types:
+        priority: integer
+        keyword: varchar
+        parent_genre: varchar
+    artist_genre_overrides:
+      +column_types:
+        priority: integer
+        rule_type: varchar
+        performer_pattern: varchar
+        parent_genre: varchar

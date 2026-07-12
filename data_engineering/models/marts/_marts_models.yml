@@ -1,0 +1,64 @@
+version: 2
+
+models:
+  - name: dim_artists
+    description: >
+      One row per performer with dominant parent genre (rule order: force
+      overrides > dominant tag genre > other_only overrides > Other) and
+      MusicBrainz / TheAudioDB metadata.
+    columns:
+      - name: performer
+        data_tests:
+          - unique
+          - not_null
+      - name: parent_genre
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values:
+                  - Rock & Metal
+                  - Hip-Hop
+                  - Pop
+                  - R&B/Soul
+                  - Country/Folk
+                  - Electronic/Dance
+                  - Jazz/Blues
+                  - Latin
+                  - Reggae/Ska
+                  - Other
+
+  - name: fct_songs
+    description: One row per song per chart year with performance, genre, and BPM.
+    columns:
+      - name: song_year_key
+        data_tests:
+          - unique
+          - not_null
+      - name: peak_position
+        data_tests:
+          - not_null
+          - accepted_range:
+              arguments:
+                min_value: 1
+                max_value: 100
+      - name: weeks_on_chart
+        data_tests:
+          - not_null
+          - accepted_range:
+              arguments:
+                min_value: 1
+                max_value: 200
+      - name: parent_genre
+        data_tests:
+          - not_null
+
+  - name: fct_chart_weeks
+    description: Weekly chart grain (1960+) materialized for Power BI.
+    columns:
+      - name: chart_week
+        data_tests:
+          - not_null
+      - name: chart_position
+        data_tests:
+          - not_null
