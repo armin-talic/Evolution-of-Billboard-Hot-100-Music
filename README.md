@@ -1,21 +1,40 @@
-Evolution-of-Mainstream-Music-Billboard-Hot-100
-Tracking the evolution of mainstream music through data visualization (1960-2025). 
-The data is collected by scraping Billboard Hot 100 history and enriched with MusicBrainz and TheAudioDB APIs. 
-Data Collection is done with R and Python and all visualizations except for [Tableau Dashboard](https://public.tableau.com/app/profile/armin.talic/viz/EvolutionofMainstreamMusicBillboardHot100/EvolutionofMainstreamMusic) are created in R (ggplot2).
+# Evolution of Mainstream Music — Billboard Hot 100 (1960–2025)
+
+Tracking the evolution of mainstream music through data visualization (1960-2025).
+The data is collected by scraping Billboard Hot 100 history and enriched with MusicBrainz and TheAudioDB APIs.
+Data collection is done with R and Python. All transformations run in dbt on DuckDB, with data tests on every model. Visualizations are created in R (ggplot2) and [Tableau](https://public.tableau.com/app/profile/armin.talic/viz/EvolutionofMainstreamMusicBillboardHot100/EvolutionofMainstreamMusic), with a Power BI dashboard in progress.
+
+```mermaid
+flowchart LR
+    subgraph Extract ["Extract (R)"]
+        A[Billboard Hot 100<br/>weekly history] --> R1[01_data_preparation.R]
+        B[MusicBrainz API] --> R1
+        C[TheAudioDB API] --> R1
+    end
+    R1 --> D["data/raw/ (CSV)"]
+    subgraph Transform ["Transform (dbt + DuckDB)"]
+        D --> E[staging models<br/>+ data tests]
+        S[seeds:<br/>genre rules] --> F
+        E --> F[marts:<br/>dim_artists, fct_songs,<br/>fct_chart_weeks]
+    end
+    F --> G[Tableau / Power BI<br/>+ R chart scripts]
+```
 
 ## Table of Contents
 * [Tableau Dashboard](#tableau-dashboard)
 * [Data Visualization](#data-visualization)
-    * [Longest-Running Hits](#-the-vinyl-dashboard-longest-running-hits)
+    * [Longest-Running Hits](#longest-running-hits)
     * [The Rise of One-week Wonders](#the-rise-of-one-week-wonders)
     * [Billboard Hot 100 Timeline Infographic](#billboard-hot-100-timeline-infographic)
-* [Data Collection & Sources](#️-data-collection--sources)
+* [Data Model](#data-model)
+* [Data Quality & Testing](#data-quality--testing)
+* [Data Collection & Sources](#data-collection--sources)
 
 ---
 
 ## Tableau Dashboard
 
-Explore the interactive version of this visualization on Tableau Public. Hover over the genre waves to see the all-time top artists for each style, or use the timeline to filter the vinyl chart by decade.  
+Explore the interactive version of this visualization on Tableau Public. Hover over the genre waves to see the all-time top artists for each style, or use the timeline to filter the vinyl chart by decade.
 
 [**Access the Interactive Tableau Dashboard Here**](https://public.tableau.com/app/profile/armin.talic/viz/EvolutionofMainstreamMusicBillboardHot100/EvolutionofMainstreamMusic)
 
@@ -26,7 +45,7 @@ Explore the interactive version of this visualization on Tableau Public. Hover o
 
 ### Longest-Running Hits
 
-A vinyl-styled visualization showing the artists with the highest "longevity" on Billboard Top 100; longevity is defined by total amount of weeks accumulated while the track is on the list. 
+A vinyl-styled visualization showing the artists with the highest "longevity" on Billboard Top 100; longevity is defined by total amount of weeks accumulated while the track is on the list.
 Time is mapped around the vinyl's circumference, while the vinyl grooves serve as a scale for longevity; the further a bar extends outward, the longer that song stayed on the Hot 100.
 
 <p align="center">
@@ -48,13 +67,13 @@ Time is mapped around the vinyl's circumference, while the vinyl grooves serve a
 The following visualizations break down 65 years of musical data into specific eras. Each dashboard shows the following metrics:
 
 * **Top Artist:** The act maintaining the highest cumulative weeks on the Billboard Hot 100 chart per year.
-* **Top Songs:** The longest-running #1 hit for every single year in the dataset. 
-* **Chart Velocity:** A density map showing the relationship between a song's Peak Rank (1-100) and its total weeks on chart. 
+* **Top Songs:** The longest-running #1 hit for every single year in the dataset.
+* **Chart Velocity:** A density map showing the relationship between a song's Peak Rank (1-100) and its total weeks on chart.
 * **Genres Wave:** A streamgraph showing the "Volume" or market share of the top genres over time. Thickness indicates higher popularity in the mainstream.
 * **Genre Longevity:** A ridgeplot showing the distribution of "staying power" per genre.
 * **Tempo Analysis:** A dynamic metronome showing the Average BPM (Beats Per Minute) for the era.
 
-### 1980s 
+### 1980s
 
 <p align="center">
 
@@ -107,9 +126,34 @@ The following visualizations break down 65 years of musical data into specific e
 
 ---
 
+## Data Model
+
+The pipeline is split into two layers:
+
+| Layer | Tooling | What it does |
+|---|---|---|
+| **Extract** | R ([data_collection/01_data_preparation.R](data_collection/01_data_preparation.R)) | Downloads the weekly Hot 100 history and fetches metadata for every unique performer from the MusicBrainz and TheAudioDB APIs. The API pulls use cache-and-resume, so the multi-hour fetches never need repeating. Raw CSVs land in `data/raw/` unchanged. |
+| **Transform** | dbt + DuckDB (`models/`) | Staging models type and standardize the raw extracts. Seeds hold the genre-classification rules as plain CSV. Marts roll everything up to analysis-ready tables. |
+
+Main models:
+
+* `stg_billboard_weekly` — weekly chart grain, typed, with derived year/decade/new-entry flags
+* `dim_artists` — one row per performer with the resolved parent genre and API metadata
+* `fct_songs` — one row per song per chart year: weeks on chart, peak position, genre, BPM
+* `fct_chart_weeks` — weekly grain (1960+) materialized for BI tools
+
+Classifying ~11,000 performers into 10 parent genres from messy community tags is the trickiest part of the project. The rules live in three dbt seeds — a tag blocklist, keyword rules, and artist-level overrides — so every rule is versioned, testable and reviewable as a plain CSV diff.
+
+## Data Quality & Testing
+
+Every model has dbt data tests (uniqueness, not-null, accepted ranges and values):
+
+* Chart positions must fall in 1–100, BPM in 30–300, genre labels must belong to the 10-genre taxonomy.
+* The uniqueness test on the weekly grain caught a real historical quirk: for 13 weeks in late 1990, "Unchained Melody" by The Righteous Brothers charted twice at the same time — the 1965 original and a 1990 re-recording, both revived by the film *Ghost*. The test warns on those 13 known rows and fails only if new duplicates ever appear.
+
 ## Data Collection & Sources
 
-This project uses a multi-source data pipeline, integrating core historical chart data with dual API metadata enrichment. 
+This project uses a multi-source data pipeline, integrating core historical chart data with dual API metadata enrichment.
 
 1. **Billboard Hot 100 History (Base Data)**
    * **Source:** [utdata/rwd-billboard-data](https://github.com/utdata/rwd-billboard-data)
@@ -124,3 +168,6 @@ This project uses a multi-source data pipeline, integrating core historical char
 
 4. **TheAudioDB API (Supplemental Enrichment)**
    * Fallback for missing genre metadata and qualitative "Mood" attributes.
+
+5. **GetSongBPM API (Tempo)**
+   * Song-level BPM for long-career artists, powering the tempo/metronome visuals.
