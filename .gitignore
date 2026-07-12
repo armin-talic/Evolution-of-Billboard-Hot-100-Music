@@ -1,0 +1,29 @@
+# Data (raw pulls + legacy reference files — too large / not meant for git history)
+data/
+
+# dbt
+target/
+dbt_packages/
+logs/
+.user.yml
+
+# DuckDB warehouse (rebuilt by `dbt build`)
+warehouse/
+*.duckdb
+*.duckdb.wal
+
+# Python
+.venv/
+venv/
+__pycache__/
+*.pyc
+
+# R
+.Rhistory
+.RData
+.Rproj.user/
+.httr-oauth
+
+# OS
+.DS_Store
+Thumbs.db
