@@ -2,7 +2,7 @@
 
 Tracking the evolution of mainstream music through data visualization (1960-2025).
 The data is collected by scraping Billboard Hot 100 history and enriched with MusicBrainz and TheAudioDB APIs.
-Data collection is done with R and Python. All transformations run in dbt on DuckDB, with data tests on every model. Visualizations are created in R (ggplot2) and [Tableau](https://public.tableau.com/app/profile/armin.talic/viz/EvolutionofMainstreamMusicBillboardHot100/EvolutionofMainstreamMusic), with a Power BI dashboard in progress.
+Data collection is done with R and Python. All transformations run in dbt on DuckDB, with data tests on every model. Visualizations are created in R (ggplot2) and [Tableau](https://public.tableau.com/app/profile/armin.talic/viz/EvolutionofMainstreamMusicBillboardHot100/EvolutionofMainstreamMusic).
 
 ```mermaid
 flowchart LR
