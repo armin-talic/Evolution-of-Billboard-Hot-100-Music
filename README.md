@@ -26,6 +26,15 @@ flowchart LR
     * [Longest-Running Hits](#longest-running-hits)
     * [The Rise of One-week Wonders](#the-rise-of-one-week-wonders)
     * [Billboard Hot 100 Timeline Infographic](#billboard-hot-100-timeline-infographic)
+    * [The Hot 100 in Numbers](#the-hot-100-in-numbers)
+    * [Solo Artists vs Bands](#solo-artists-vs-bands)
+    * [Which Genres Have Staying Power](#which-genres-have-staying-power)
+    * [Straight In at Number One](#straight-in-at-number-one)
+    * [The Comeback Machine](#the-comeback-machine)
+    * [The Narrowing Funnel](#the-narrowing-funnel)
+    * [Collaboration Songs](#collaboration-songs)
+    * [65 Years of Song Titles](#65-years-of-song-titles)
+    * [Song Titles Are Shrinking](#song-titles-are-shrinking)
 * [Data Collection](#data-collection)
 * [Data Engineering](#data-engineering)
     * [Data Model](#data-model)
@@ -123,6 +132,96 @@ The following visualizations break down 65 years of musical data into specific e
   <summary>🔍 <strong>View All Time</strong></summary><br>
   <img src="charts/Dashboard_All_Time.png" width="100%">
 </details>
+
+---
+
+### The Hot 100 in Numbers
+
+High level statistics of the dataset: everything that charted between 1960 and 2025.
+
+<p align="center">
+  <img src="charts/Hot100_In_Numbers.png" width="100%" alt="Billboard Hot 100 Key Statistics">
+</p>
+
+---
+
+### Solo Artists vs Bands
+
+Yearly share of charting songs by solo artists compared to bands and groups. Groups held around half of the chart for decades before fading, as hip-hop and streaming made solo artists the default.
+
+<p align="center">
+  <img src="charts/Solo_Artists_Vs_Bands.png" width="100%" alt="Solo Artists vs Bands Share">
+</p>
+
+---
+
+### Which Genres Have Staying Power
+
+Distribution of total weeks on chart per song and genre, sorted by median chart stay. Electronic and country hits linger the longest while hip-hop tracks come and go the fastest. The bump around week 20 reflects Billboard's recurrence rule that removes older songs falling below position 50.
+
+<p align="center">
+  <img src="charts/Genre_Staying_Power.png" width="100%" alt="Genre Staying Power Distribution">
+</p>
+
+---
+
+### Straight In at Number One
+
+Every song that debuted directly at #1 in its first chart week. For the chart's first 35 years this never happened; a 1995 rule change and later streaming made instant #1 debuts routine.
+
+<p align="center">
+  <img src="charts/Debut_At_Number_One.png" width="100%" alt="Songs Debuting at Number One">
+</p>
+
+---
+
+### The Comeback Machine
+
+How often songs re-enter the Hot 100 after leaving it. Re-entries almost disappeared for decades and exploded in the streaming era, driven by the returning Christmas catalog and viral revivals.
+
+<p align="center">
+  <img src="charts/Chart_Reentries.png" width="100%" alt="Hot 100 Chart Re-entries per Year">
+</p>
+
+---
+
+### The Narrowing Funnel
+
+The number of new songs debuting on the chart each year. The funnel narrowed for decades and reopened in the streaming era; in the shaded 1992-1998 window only commercially released singles could chart.
+
+<p align="center">
+  <img src="charts/New_Songs_Funnel.png" width="100%" alt="New Songs Reaching the Hot 100 per Year">
+</p>
+
+---
+
+### Collaboration Songs
+
+The share of charting songs credited to more than one act. Collaborations were a rarity until the 1990s and now account for roughly a third of the chart.
+
+<p align="center">
+  <img src="charts/Collaboration_Songs.png" width="100%" alt="Collaboration Songs Reaching the Chart">
+</p>
+
+---
+
+### 65 Years of Song Titles
+
+The share of songs whose title contains one of the five most common title words. "Love" dominated for four decades and fades steadily; "time" never goes out of fashion.
+
+<p align="center">
+  <img src="charts/Title_Words.png" width="100%" alt="Most Common Words in Song Titles">
+</p>
+
+---
+
+### Song Titles Are Shrinking
+
+Average number of words in song titles per debut year, falling from almost four words in the early 1970s to under two and a half today.
+
+<p align="center">
+  <img src="charts/Title_Length.png" width="100%" alt="Average Song Title Length Over Time">
+</p>
 
 ---
 
