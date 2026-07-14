@@ -23,7 +23,7 @@ flowchart LR
 ## Table of Contents
 * [Data Visualization](#data-visualization)
     * [Tableau Dashboard](#tableau-dashboard)
-    * [Static Charts](#static-charts)
+    * [Analysis](#analysis)
         * [The Hot 100 in Numbers](#the-hot-100-in-numbers)
         * [Longest-Running Hits](#longest-running-hits)
         * [The Rise of One-week Wonders](#the-rise-of-one-week-wonders)
@@ -53,7 +53,7 @@ Explore the interactive version of this visualization on Tableau Public. Hover o
 
 ---
 
-### Static Charts
+### Analysis
 
 #### The Hot 100 in Numbers
 
